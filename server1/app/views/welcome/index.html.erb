@@ -1,0 +1,23 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+<div id="test"></div>
+  <script type="text/javascript">
+    fetch('https://<%=ENV['API_URL']%>/dummy/index?rand=<%= rand() %>', {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(j) {
+      if (j.length == 0) {
+        const text = 'warning: repsonse is zero length';
+        console.log(text);
+        document.write(text);
+      }
+      else {
+        console.log(j);
+        document.write(j);
+      }
+    });
+  </script>
