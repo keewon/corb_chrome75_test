@@ -14,7 +14,7 @@ It consists of 2 Rails servers and 1 Android app.
 For HTTPS, I used [ngrok](https://ngrok.com/). I guess you can use ngrok freely.
 
 ## HTML server
-It provides simple HTML. See server1/app/views/welcome/index.html.erb
+It provides simple HTML. See https://github.com/keewon/corb_chrome75_test/blob/master/server1/app/views/welcome/index.html.erb
 Inside the HTML, it calls `fetch()` to fetch response from the JSON API server.
 
  - Endpoint is /welcome/index
@@ -24,7 +24,7 @@ Inside the HTML, it calls `fetch()` to fetch response from the JSON API server.
 
 ## JSON API server
 It provides 5K bytes of JSON response.
-It puts CORS related headers to the response header. See apiserver/app/controllers/dummy_controller.rb
+It puts CORS related headers to the response header. See https://github.com/keewon/corb_chrome75_test/blob/master/apiserver/app/controllers/dummy_controller.rb
 It removes `X-Content-Type-Options: nosniff` from the repsonse headers.
 
  - Endpoint is /dummy/index
@@ -35,6 +35,7 @@ It removes `X-Content-Type-Options: nosniff` from the repsonse headers.
 ## Android app
 Built with Android SDK 27.
 It has a WebView and it loads data with `WebView.loadDataWithBaseURL`.
+https://github.com/keewon/corb_chrome75_test/blob/master/android_app/app/src/main/java/com/acidblob/corbtest/MainActivity.java#L73
 I guess this is the main difference between this example and browser.
 
 Please put the first part of ngrok1 host name into the TextField. (Usually 8 characters of hex string)
