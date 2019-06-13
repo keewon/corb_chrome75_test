@@ -20,21 +20,22 @@ Inside the HTML, it calls `fetch()` to fetch response from the JSON API server.
  - Endpoint is /welcome/index
  - Rails 4.2.8
  - Tested with Ruby 2.4.1
- - Do bundle install before running
+ - Do `bundle install` before running
 
 ## JSON API server
 It provides 5K bytes of JSON response.
 It puts CORS related headers to the response header. See apiserver/app/controllers/dummy_controller.rb
-It also puts `X-Content-Type-Options: nosniff` which is default for Rails.
+It removes `X-Content-Type-Options: nosniff` from the repsonse headers.
 
  - Endpoint is /dummy/index
  - Rails 4.2.8
  - Tested with Ruby 2.4.1
- - Do bundle install before running
+ - Do `bundle install` before running
  
 ## Android app
 Built with Android SDK 27.
 It has a WebView and it loads data with `WebView.loadDataWithBaseURL`.
+I guess this is the main difference between this example and browser.
 
 Please put the first part of ngrok1 host name into the TextField. (Usually 8 characters of hex string)
 When button is clicked, it loads HTML first from the HTML server.
@@ -59,7 +60,7 @@ HTML will fetch data from the JSON API server.
 
  C. When B is successful, kill the app. Relaunch the app. Click the button 2~3 times again.
 
- D. When 'Welcome#index' is not changed to the JSON data, it means CORB happened.
+ D. When 'Welcome#index' is changed to `warning: response is zero length`, it means CORB happened.
     You may connect desktop chrome inspector (chrome://inspect#devices) and reclick the button.
     Once CORB happened, it happens until you clear app data even you relaunch the app.
 
