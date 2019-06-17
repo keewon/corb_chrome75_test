@@ -10,27 +10,20 @@ I saw this happens to a few of my customers' devices including my colleague's Ga
 All were from Chrome 75.
 
 To reproduce this issue, I made an example.
-It consists of 2 Rails servers and 1 Android app.
+It consists of ~~2 Rails servers~~ 2 python servers and 1 Android app.
 For HTTPS, I used [ngrok](https://ngrok.com/). I guess you can use ngrok freely.
 
 ## HTML server
-It provides simple HTML. See https://github.com/keewon/corb_chrome75_test/blob/master/server1/app/views/welcome/index.html.erb
+It provides simple HTML. See https://github.com/keewon/corb_chrome75_test/blob/master/python_servers/server1.py
 Inside the HTML, it calls `fetch()` to fetch response from the JSON API server.
 
- - Endpoint is /welcome/index
- - Rails 4.2.8
- - Tested with Ruby 2.4.1
- - Do `bundle install` before running
+ - Python3 is required
 
 ## JSON API server
 It provides 5K bytes of JSON response.
-It puts CORS related headers to the response header. See https://github.com/keewon/corb_chrome75_test/blob/master/apiserver/app/controllers/dummy_controller.rb
-It removes `X-Content-Type-Options: nosniff` from the repsonse headers.
+It puts CORS related headers to the response header. See https://github.com/keewon/corb_chrome75_test/blob/master/python_servers/apiserver.py
 
- - Endpoint is /dummy/index
- - Rails 4.2.8
- - Tested with Ruby 2.4.1
- - Do `bundle install` before running
+ - Python3 is required
  
 ## Android app
 Built with Android SDK 27.
@@ -57,7 +50,7 @@ HTML will fetch data from the JSON API server.
    - `make run2` (JSON API server)
 
  B. When the android app is launched, set ngrok1 host, and click the button 1~2 times.
-    You will see 'Welcome#index'. Then it will be changed to the JSON data.
+    You will see 'Waiting for apiserver'. Then it will be changed to the JSON data.
 
  C. When B is successful, kill the app. Relaunch the app. Click the button 2~3 times again.
 
