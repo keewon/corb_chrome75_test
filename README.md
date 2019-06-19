@@ -2,7 +2,7 @@
 I'm having trouble with CORB on Android WebView with Chrome 75.
 
 I believe I set CORS related header correctly, because CORB happens randomly, not always.
-The code also worked well with Chrome 74 or earlier.
+The code also worked well with Chrome 74 or earlier or 76.
 When CORB happens once, it happens forever until app data is reset.
 I saw this happens to a few of my customers' devices including my colleague's Galaxy S10e (Android 9.0).
 All were from Chrome 75.
@@ -38,7 +38,7 @@ HTML will fetch data from the JSON API server.
 ## My Android device setting
  - Essential phone (PH-1)
  - Android 9
- - Installed Chrome(74.0.3729.157), Chrome Beta(75.0.3770.75) and Chrome Dev (76.0.3809.21)
+ - Installed Chrome(75.0.3770.89), Chrome Beta(76.0.3809.21) and Chrome Dev (77.0.3828.0)
  - I Chose Chrome 75 as a WebView implementation in Developer Option.
  - I failed to reproduce this on the emulator.
 
