@@ -1,8 +1,6 @@
 # Overview
 I'm having trouble with CORB on Android WebView with Chrome 75.
 
-https://youtu.be/gZbA63-jVKg
-
 I believe I set CORS related header correctly, because CORB happens randomly, not always.
 The code also worked well with Chrome 74 or earlier.
 When CORB happens once, it happens forever until app data is reset.
@@ -12,6 +10,8 @@ All were from Chrome 75.
 To reproduce this issue, I made an example.
 It consists of ~~2 Rails servers~~ 2 python servers and 1 Android app.
 For HTTPS, I used [ngrok](https://ngrok.com/). I guess you can use ngrok freely.
+
+![Overview](screenshots/overview.png)
 
 ## HTML server
 It provides simple HTML. See https://github.com/keewon/corb_chrome75_test/blob/master/python_servers/server1.py
@@ -51,12 +51,16 @@ HTML will fetch data from the JSON API server.
 
  B. When the android app is launched, set ngrok1 host, and click the button 1~2 times.
     You will see 'Waiting for apiserver'. Then it will be changed to the JSON data.
+    
+![Success](screenshots/Screenshot_20190619-102118.png)
 
  C. When B is successful, kill the app. Relaunch the app. Click the button 2~3 times again.
 
- D. When 'Welcome#index' is changed to `warning: response is zero length`, it means CORB happened.
+ D. When 'Waiting for apiserver' is changed to `warning: response is zero length`, it means CORB happened.
     You may connect desktop chrome inspector (chrome://inspect#devices) and reclick the button.
     Once CORB happened, it happens until you clear app data even you relaunch the app.
+
+![Failure](screenshots/Screenshot_20190619-102033.png)
 
  E. Even though you tried B and C several times, it may not be reproduced.
     In that case,
