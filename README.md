@@ -1,3 +1,8 @@
+### Update
+This is resolved now.
+https://bugs.chromium.org/p/chromium/issues/detail?id=976253
+
+
 # Overview
 I'm having trouble with CORB on Android WebView with Chrome 75.
 
